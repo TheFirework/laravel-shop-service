@@ -38,6 +38,10 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
     Route::group(['prefix'=>'admin'],function (){
        Route::get('/','UserController@page');
     });
+
+    Route::group(['prefix' => 'menu'],function (){
+        Route::get('/','MenuController@index');
+    });
 });
 
 
