@@ -50,15 +50,11 @@ class UserController extends BaseController
     {
         $user = auth('manage')->user();
 
-        $permissions = DB::table('role')->where('id', $user['role_id'])->value('permissions');
+        $perms = DB::table('role')->where('id', $user['role_id'])->value('permissions');
 
-        $permissions = explode(',', $permissions);
+        $perms = explode(',', $perms);
 
-        $menus = Menu::whereIn('id', $permissions)->get()->toArray();
-
-        $perms = [
-
-        ];
+        $menus = Menu::whereIn('id', $perms)->get()->toArray();
 
         return $this->success_return([
             'menus' => $menus,

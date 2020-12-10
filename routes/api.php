@@ -27,21 +27,27 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
         Route::get('permmenu','UserController@permmenu');
     });
 
-    Route::group(['prefix' => 'dept'],function (){
-        Route::get('/','DeptController@index');
-        Route::post('/','DeptController@store');
-        Route::post('/destroy','DeptController@destroy');
-        Route::post('/updateOrder','DeptController@updateOrder');
-        Route::post('/{dept}','DeptController@update');
+
+    // 要验证权限的路由
+    Route::group(['prefix'=>'sys'],function (){
+
+        Route::group(['prefix'=>'user'],function (){
+            Route::get('/page','UserController@page');
+        });
+
+        Route::group(['prefix' => 'menu'],function (){
+            Route::get('/page','MenuController@index');
+        });
+
+        Route::group(['prefix' => 'dept'],function (){
+            Route::get('/page','DeptController@index');
+            Route::post('/add','DeptController@store');
+            Route::post('/destroy','DeptController@destroy');
+            Route::post('/sort','DeptController@updateOrder');
+            Route::post('/update/{dept}','DeptController@update');
+        });
     });
 
-    Route::group(['prefix'=>'admin'],function (){
-       Route::get('/','UserController@page');
-    });
-
-    Route::group(['prefix' => 'menu'],function (){
-        Route::get('/','MenuController@index');
-    });
 });
 
 
