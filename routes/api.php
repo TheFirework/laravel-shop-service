@@ -36,14 +36,22 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
         });
 
         Route::group(['prefix' => 'menu'],function (){
-            Route::get('/page','MenuController@index');
+            Route::get('/page','MenuController@page');
             Route::post('/create','MenuController@store');
             Route::post('/destroy','MenuController@destroy');
             Route::post('/update/{menu}','MenuController@update');
         });
 
+        Route::group(['prefix' => 'role'],function (){
+            Route::get('/page','RoleController@page');
+            Route::post('/create','RoleController@store');
+            Route::post('/destroy','RoleController@destroy');
+            Route::post('/batchDestroy','RoleController@batchDestroy');
+            Route::post('/update/{role}','RoleController@update');
+        });
+
         Route::group(['prefix' => 'dept'],function (){
-            Route::get('/page','DeptController@index');
+            Route::get('/page','DeptController@page');
             Route::post('/create','DeptController@store');
             Route::post('/destroy','DeptController@destroy');
             Route::post('/sort','DeptController@updateOrder');
