@@ -19,7 +19,7 @@ class UserController extends BaseController
 
         if ($search = $request->input('search', '')) {
             $like = '%'.$search.'%';
-            // 模糊搜索商品标题、商品详情、SKU 标题、SKU描述
+            // 模糊搜索
             $builder->where(function ($query) use ($like) {
                 $query->where('name', 'like', $like)
                     ->orWhere('username', 'like', $like)
@@ -50,11 +50,13 @@ class UserController extends BaseController
     {
         $user = auth('manage')->user();
 
-        $perms = DB::table('role')->where('id', $user['role_id'])->value('permissions');
+        $permissions = DB::table('role')->where('id', $user['role_id'])->value('permissions');
 
-        $perms = explode(',', $perms);
+        $permissions = explode(',', $permissions);
 
-        $menus = Menu::whereIn('id', $perms)->get()->toArray();
+        $menus = Menu::whereIn('id', $permissions)->where('type','!=',3)->get()->toArray();
+
+        $perms = Menu::whereIn('id', $permissions)->where('type','=',3)->select('perms')->get()->toArray();
 
         return $this->success_return([
             'menus' => $menus,
