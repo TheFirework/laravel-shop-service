@@ -6,7 +6,7 @@ class Dept extends BaseModel
 {
     protected $table = 'dept';
 
-    protected $fillable = ['deptname','parentId','is_delete','orderNum'];
+    protected $fillable = ['dept_name','parent_id','is_delete','order_num'];
 
     public function dept()
     {

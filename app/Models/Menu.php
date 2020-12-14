@@ -8,7 +8,7 @@ class Menu extends Model
 {
     protected $table = 'menu';
 
-    protected $fillable = ['type', 'name','icon','parentId','isShow','orderNum','path','keepAlive','perms','is_delete'];
+    protected $fillable = ['type', 'name','icon','parent_id','is_show','order_num','path','keep_alive','perms','is_delete'];
 
     public function childMenu(){
         return $this->hasMany('App\Models\Menu','parentId','id');

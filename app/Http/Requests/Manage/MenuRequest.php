@@ -16,8 +16,8 @@ class MenuRequest extends FormRequest
         return [
             'type' => 'required',
             'name' => 'required',
-            'parentId' => 'required',
-            'orderNum' => 'required'
+            'parent_id' => 'required',
+            'order_num' => 'required'
         ];
     }
 
@@ -26,8 +26,8 @@ class MenuRequest extends FormRequest
         return [
             'type.required' => '节点类型',
             'name.required' => '节点名称',
-            'parentId.required' => '上级菜单',
-            'orderNum.required' => '排序',
+            'parent_id.required' => '上级菜单',
+            'order_num.required' => '排序',
         ];
     }
 }

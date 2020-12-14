@@ -46,7 +46,6 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
             Route::get('/page','RoleController@page');
             Route::post('/create','RoleController@store');
             Route::post('/destroy','RoleController@destroy');
-            Route::post('/batchDestroy','RoleController@batchDestroy');
             Route::post('/update/{role}','RoleController@update');
         });
 

@@ -12,7 +12,7 @@ class DeptController extends BaseController
 
     public function page()
     {
-        $depts = Dept::with(['dept'])->where('is_delete',0)->orderBy('orderNum','desc')->get();
+        $depts = Dept::with(['dept'])->where('is_delete',0)->orderBy('order_num','desc')->get();
 
         return $this->success_return($depts);
     }
@@ -43,8 +43,8 @@ class DeptController extends BaseController
      */
     public function update(Dept $dept,Request $request)
     {
-        $dept->deptname = $request->deptname;
-        $dept->orderNum = $request->orderNum;
+        $dept->dept_name = $request->dept_name;
+        $dept->order_num = $request->order_num;
         $dept->save();
         return $this->success_return($dept);
     }

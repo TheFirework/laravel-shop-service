@@ -4,7 +4,12 @@
     <list default="true" id="0731ad5f-50fb-4387-8c68-d37bf25b8457" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manage/DeptController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manage/DeptController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manage/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manage/MenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Manage/RoleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Manage/RoleController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Manage/DeptRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Manage/DeptRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Requests/Manage/MenuRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/Manage/MenuRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Dept.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Dept.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Menu.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Menu.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Role.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Role.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -173,7 +178,8 @@
       <workItem from="1607512148344" duration="1311000" />
       <workItem from="1607563748787" duration="867000" />
       <workItem from="1607590897064" duration="2390000" />
-      <workItem from="1607649264872" duration="9638000" />
+      <workItem from="1607649264872" duration="10383000" />
+      <workItem from="1607910354858" duration="2830000" />
     </task>
     <servers />
   </component>
@@ -185,10 +191,10 @@
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
     <state x="684" y="344" key="#com.intellij.fileTypes.FileTypeChooser/0.30.1920.1050/1920.0.1920.1050@0.30.1920.1050" timestamp="1607419034516" />
-    <state x="690" y="310" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606717700006">
+    <state x="690" y="310" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1607913476757">
       <screen x="0" y="30" width="1920" height="1050" />
     </state>
-    <state x="690" y="310" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1920.1050/1920.0.1920.1050@0.30.1920.1050" timestamp="1606717700006" />
+    <state x="690" y="310" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1920.1050/1920.0.1920.1050@0.30.1920.1050" timestamp="1607913476757" />
     <state x="690" y="310" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.30.1920.1050@0.30.1920.1050" timestamp="1606556641470" />
     <state width="1877" height="264" key="GridCell.Tab.0.bottom" timestamp="1606471352042">
       <screen x="0" y="30" width="1920" height="1050" />
