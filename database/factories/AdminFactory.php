@@ -8,12 +8,12 @@ use Illuminate\Support\Str;
 
 // 头像假数据
 $avatars = [
-    'https://cdn.learnku.com/uploads/images/201710/14/1/s5ehp11z6s.png',
-    'https://cdn.learnku.com/uploads/images/201710/14/1/Lhd1SHqu86.png',
-    'https://cdn.learnku.com/uploads/images/201710/14/1/LOnMrqbHJn.png',
-    'https://cdn.learnku.com/uploads/images/201710/14/1/xAuDMxteQy.png',
-    'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png',
-    'https://cdn.learnku.com/uploads/images/201710/14/1/NDnzMutoxX.png',
+    '/uploads/images/default/s5ehp11z6s.png',
+    '/uploads/images/default/Lhd1SHqu86.png',
+    '/uploads/images/default/LOnMrqbHJn.png',
+    '/uploads/images/default/xAuDMxteQy.png',
+    '/uploads/images/default/ZqM7iaP4CR.png',
+    '/uploads/images/default/NDnzMutoxX.png',
 ];
 
 $factory->define(Admin::class, function (Faker $faker) use($avatars){

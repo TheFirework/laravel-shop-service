@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class MenuController extends BaseController
 {
-    public function page(Request $request)
+    public function index(Request $request)
     {
         $menus = Menu::all();
 

@@ -13,6 +13,7 @@
         "gregwar/captcha": "^1.1",
         "laravel/framework": "^6.20",
         "laravel/tinker": "^2.5",
+        "overtrue/laravel-lang": "~3.0",
         "tymon/jwt-auth": "^1.0"
     },
     "require-dev": {

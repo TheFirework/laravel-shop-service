@@ -13,7 +13,7 @@ class AdminsTableSeeder extends Seeder
     public function run()
     {
         $admins = factory(Admin::class)->times(50)->create();
-        
+
 
         // 单独处理第一个用户的数据
         $user = Admin::find(1);
@@ -27,7 +27,7 @@ class AdminsTableSeeder extends Seeder
         $user->dept_id = 1;
         $user->role_id = 1;
         $user->is_delete = 0;
-        $user->avatar = 'http://thirdwx.qlogo.cn/mmopen/vi_32/WTocuibah8NhhOxV8AyHqIK9932Taz217biaHDuXb1NX4hX9HWh2LiaLxQgCu8dlT4oSicGB4V5wD4mqKACcrPib8qA/132';
+        $user->avatar = '/uploads/images/default/fireworks.jpg';
         $user->save();
     }
 }

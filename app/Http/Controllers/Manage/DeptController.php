@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class DeptController extends BaseController
 {
 
-    public function page()
+    public function index()
     {
         $depts = Dept::with(['dept'])->where('is_delete',0)->orderBy('order_num','desc')->get();
 

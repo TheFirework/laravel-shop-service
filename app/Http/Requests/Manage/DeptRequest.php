@@ -21,12 +21,12 @@ class DeptRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function attributes()
     {
         return [
-            'parent_id.required' => '上级部门',
-            'dept_name.required' => '部门名称',
-            'order_num.required' => '排序',
+            'parent_id' => '上级部门',
+            'dept_name' => '部门名称',
+            'order_num' => '排序',
         ];
     }
 }

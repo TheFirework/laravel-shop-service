@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class RoleController extends BaseController
 {
-    public function page(Request $request)
+    public function index(Request $request)
     {
         $roles = Role::paginate($request->input('pageSize',10));
 
