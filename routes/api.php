@@ -13,8 +13,8 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::namespace('Manage')->group(function (){
-    Route::post('/manage/auth/login', 'LoginController@login');
+Route::namespace('Manage')->prefix('manage')->group(function (){
+    Route::post('/auth/login', 'LoginController@login');
 });
 
 
@@ -27,10 +27,10 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
         Route::get('menu','AdminController@menu');
     });
 
+    // 需要验证权限
+
     Route::post('/upload', 'UploadController@upload');
 
-
-    // 要验证权限的路由
     Route::group(['prefix'=>'sys'],function (){
 
         Route::group(['prefix'=>'user'],function (){
@@ -62,7 +62,20 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
             Route::post('/sort','DeptController@updateOrder');
             Route::post('/update/{dept}','DeptController@update');
         });
+
     });
+
+    Route::group(['prefix'=>'product'],function (){
+        Route::group(['prefix' => 'category'],function (){
+            Route::get('/page','CategoriesController@page');
+            Route::get('/all','CategoriesController@all');
+            Route::get('/edit/{category}','CategoriesController@edit');
+            Route::post('/create','CategoriesController@store');
+            Route::post('/destroy/{category}','CategoriesController@destroy');
+            Route::post('/update/{category}','CategoriesController@update');
+        });
+    });
+
 
 });
 

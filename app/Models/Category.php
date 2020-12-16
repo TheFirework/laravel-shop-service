@@ -32,17 +32,17 @@ class Category extends BaseModel
 
     public function parent()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class,'id','parent_id');
     }
 
     public function children()
     {
-        return $this->hasMany(Category::class, 'parent_id');
+        return $this->hasMany(Category::class, 'parent_id','id');
     }
 
     public function products()
     {
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'category_id','id');
     }
 
     // 定义一个访问器，获取所有祖先类目的 ID 值
