@@ -59,7 +59,7 @@ class AdminController extends BaseController
 
         $menus = Menu::whereIn('id', $permissions)->where('type','!=',3)->get()->toArray();
 
-        $perms = Menu::whereIn('id', $permissions)->where('type','=',3)->select('perms')->get()->toArray();
+        $perms = Menu::whereIn('id', $permissions)->where('type','=',3)->pluck('perms');
 
         return $this->success_return([
             'menus' => $menus,
