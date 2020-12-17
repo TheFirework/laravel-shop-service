@@ -18,7 +18,7 @@ Route::namespace('Manage')->prefix('manage')->group(function (){
 });
 
 
-Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->group(function (){
+Route::namespace('Manage')->middleware(['refreshToken','permission'])->prefix('manage')->group(function (){
 
     Route::group(['prefix' => 'auth'],function (){
         Route::post('logout', 'LoginController@logout');
@@ -27,14 +27,14 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
         Route::get('menu','AdminController@menu');
     });
 
-    // 需要验证权限
+    // 需要验证权限 'permission'
 
     Route::post('/upload', 'UploadController@upload');
 
     Route::group(['prefix'=>'sys'],function (){
 
         Route::group(['prefix'=>'user'],function (){
-            Route::get('/list','AdminController@index');
+            Route::get('/page','AdminController@index');
             Route::post('/create','AdminController@store');
             Route::post('/destroy','AdminController@destroy');
             Route::post('/move','AdminController@move');
@@ -42,14 +42,14 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
         });
 
         Route::group(['prefix' => 'menu'],function (){
-            Route::get('/list','MenuController@index');
+            Route::get('/page','MenuController@index');
             Route::post('/create','MenuController@store');
             Route::post('/destroy','MenuController@destroy');
             Route::post('/update/{menu}','MenuController@update');
         });
 
         Route::group(['prefix' => 'role'],function (){
-            Route::get('/list','RoleController@index');
+            Route::get('/page','RoleController@index');
             Route::post('/create','RoleController@store');
             Route::post('/destroy','RoleController@destroy');
             Route::post('/update/{role}','RoleController@update');

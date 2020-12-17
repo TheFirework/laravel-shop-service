@@ -7,6 +7,8 @@ use App\Http\Requests\Manage\Admin\Update;
 use App\Models\Admin;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -53,13 +55,37 @@ class AdminController extends BaseController
     {
         $user = auth('manage')->user();
 
-        $permissions = DB::table('role')->where('id', $user['role_id'])->value('permissions');
+        $menuKey = 'menu-'.$user['id'];
+        $premsKey = 'perms-'.$user['id'];
+
+        $menus = [];
+        $perms = [];
+
+        if(Cache::has($menuKey)){
+            $menus = Cache::get($menuKey);
+        }
+
+        if(Cache::has($premsKey)){
+            $perms = Cache::get($premsKey);
+        }
+
+        if($menus && $perms){
+            return $this->success_return([
+                'menus' => $menus,
+                'perms' => $perms
+            ]);
+        }
+
+        $permissions = DB::table('roles')->where('id', $user['role_id'])->value('permissions');
 
         $permissions = explode(',', $permissions);
 
         $menus = Menu::whereIn('id', $permissions)->where('type','!=',3)->get()->toArray();
 
         $perms = Menu::whereIn('id', $permissions)->where('type','=',3)->pluck('perms');
+
+        Cache::put($menuKey,$menus);
+        Cache::put($premsKey,$perms);
 
         return $this->success_return([
             'menus' => $menus,
