@@ -13,7 +13,7 @@ class Update extends FormRequest
         $user = $this->route('admin');
         return [
             'name' => 'required',
-            'username' => 'required|unique:admin,username,'.$user->id,
+            'username' => 'required|unique:admins,username,'.$user->id,
             'nickname' => 'required',
             'role_id' => 'required',
             'dept_id' => 'required',

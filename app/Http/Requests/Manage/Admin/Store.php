@@ -12,7 +12,7 @@ class Store extends FormRequest
     {
         return [
             'name' => 'required',
-            'username' => 'required|unique:admin',
+            'username' => 'required|unique:admins',
             'nickname' => 'required',
             'role_id' => 'required',
             'dept_id' => 'required',

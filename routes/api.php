@@ -66,6 +66,7 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
     });
 
     Route::group(['prefix'=>'product'],function (){
+
         Route::group(['prefix' => 'category'],function (){
             Route::get('/page','CategoriesController@page');
             Route::get('/all','CategoriesController@all');
@@ -73,8 +74,14 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
             Route::post('/destroy/{category}','CategoriesController@destroy');
             Route::post('/update/{category}','CategoriesController@update');
         });
-    });
 
+        Route::group(['prefix' => 'brand'],function (){
+            Route::get('/page','BrandController@page');
+            Route::post('/create','BrandController@store');
+            Route::post('/destroy/{brand}','BrandController@destroy');
+            Route::post('/update/{brand}','BrandController@update');
+        });
+    });
 
 });
 
