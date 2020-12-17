@@ -69,7 +69,6 @@ Route::namespace('Manage')->middleware(['refreshToken'])->prefix('manage')->grou
         Route::group(['prefix' => 'category'],function (){
             Route::get('/page','CategoriesController@page');
             Route::get('/all','CategoriesController@all');
-            Route::get('/edit/{category}','CategoriesController@edit');
             Route::post('/create','CategoriesController@store');
             Route::post('/destroy/{category}','CategoriesController@destroy');
             Route::post('/update/{category}','CategoriesController@update');

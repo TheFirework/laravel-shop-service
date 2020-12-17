@@ -36,11 +36,6 @@ class CategoriesController extends BaseController
         return $this->success_return($category);
     }
 
-    public function edit(Category $category)
-    {
-        return $this->success_return($category);
-    }
-
     public function update(Update $request, Category $category)
     {
         $data = $request->all();
