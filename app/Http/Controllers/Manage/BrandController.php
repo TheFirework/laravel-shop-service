@@ -41,11 +41,16 @@ class BrandController extends BaseController
     {
         $data = $request->all();
 
-        $brand->name = $data['name'];
-        $brand->cover = $data['cover'];
-        $brand->save();
+        if(preg_match("/^http(s)?:\\/\\/.+/",$data['cover'])){
+            unset($data['cover']);
+        }
 
-        return $this->success_return($brand);
+        if($brand->update($data)){
+            return $this->success_return($brand,'更新成功');
+        } else {
+            return $this->fail_return('更新失败');
+        }
+
     }
 
     public function destroy(Brand $brand)

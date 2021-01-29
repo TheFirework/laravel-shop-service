@@ -7,6 +7,7 @@ use App\Http\Requests\Manage\Admin\Update;
 use App\Models\Admin;
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -55,8 +56,10 @@ class AdminController extends BaseController
     {
         $user = auth('manage')->user();
 
-        $menuKey = 'menu-'.$user['id'];
-        $premsKey = 'perms-'.$user['id'];
+        $env = Env::get('APP_ENV');
+
+        $menuKey = 'menu-'.$user['role_id'];
+        $premsKey = 'perms-'.$user['role_id'];
 
         $menus = [];
         $perms = [];
@@ -84,8 +87,10 @@ class AdminController extends BaseController
 
         $perms = Menu::whereIn('id', $permissions)->where('type','=',3)->pluck('perms');
 
-        Cache::put($menuKey,$menus);
-        Cache::put($premsKey,$perms);
+        if($env !== 'local'){
+            Cache::put($menuKey, $menus, 4320);
+            Cache::put($premsKey, $perms, 4320);
+        }
 
         return $this->success_return([
             'menus' => $menus,

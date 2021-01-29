@@ -29,7 +29,9 @@ Route::namespace('Manage')->middleware(['refreshToken','permission'])->prefix('m
 
     // 需要验证权限 'permission'
 
-    Route::post('/upload', 'UploadController@upload');
+    Route::post('/uploadImage', 'UploadController@uploadImage');
+    Route::post('/uploadFile', 'UploadController@uploadFile');
+    Route::post('/uploadAlbum', 'UploadController@uploadAlbum');
 
     Route::group(['prefix'=>'sys'],function (){
 
@@ -80,6 +82,24 @@ Route::namespace('Manage')->middleware(['refreshToken','permission'])->prefix('m
             Route::post('/create','BrandController@store');
             Route::post('/destroy/{brand}','BrandController@destroy');
             Route::post('/update/{brand}','BrandController@update');
+        });
+
+        Route::group(['prefix' => 'goods'],function (){
+            Route::get('/page','ProductController@page');
+            Route::post('/create','ProductController@store');
+            Route::post('/destroy/{product}','ProductController@destroy');
+            Route::post('/update/{product}','ProductController@update');
+        });
+
+        Route::group(['prefix'=>'album'],function (){
+            Route::get('/page','AlbumController@page');
+            Route::get('/getAlbumList','AlbumController@getAlbumList');
+            Route::post('/addAlbum','AlbumController@addAlbum');
+            Route::post('/editAlbum/{album}','AlbumController@editAlbum');
+            Route::post('/deleteAlbum/{album}','AlbumController@deleteAlbum');
+            Route::post('/modifyPicName','AlbumController@modifyPicName');
+            Route::post('/modifyFileAlbum','AlbumController@modifyFileAlbum');
+            Route::post('/deleteFile','AlbumController@deleteFile');
         });
     });
 

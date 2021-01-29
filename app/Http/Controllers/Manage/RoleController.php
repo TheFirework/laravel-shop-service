@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manage;
 use App\Http\Requests\Manage\RoleRequest;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class RoleController extends BaseController
 {

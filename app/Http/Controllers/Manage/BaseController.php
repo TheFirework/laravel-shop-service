@@ -13,7 +13,8 @@ class BaseController extends Controller
         $this->middleware('auth:manage', ['except' => ['login']]);
     }
 
-    protected function success_return ($data = [],$message = 'success', $code = 200){
+    protected function success_return($data = [], $message = 'success', $code = 200)
+    {
         return response()->json([
             'code' => $code,
             'message' => $message,
@@ -21,7 +22,8 @@ class BaseController extends Controller
         ]);
     }
 
-    protected function fail_return ($message = 'fail',$data = '', $code = 400){
+    protected function fail_return($message = 'fail', $data = '', $code = 400)
+    {
         return response()->json([
             'code' => $code,
             'message' => $message,
@@ -29,17 +31,25 @@ class BaseController extends Controller
         ]);
     }
 
-    protected function getTree($data,$pid=0)
+    /**
+     * @param $data
+     * @param int $pid
+     * @param int $level
+     * @return array|string
+     */
+    public function deepTree($data, $pid = 0, $level = 0)
     {
         $tree = [];
-        foreach ($data as $key => $item){
-            if ($item['parent_id'] == $pid){
-                $tree[$item['id']] = $item;
+        foreach ($data as $key => $value) {
+            if ($value['parent_id'] == $pid) {
+                $tree[] = $value;
                 unset($data[$key]);
-                $tree[$item['id']]['children'] = $this->getTree($data, $item['id']);
+                $value['level'] = $level;
+                $value['children'] = $this->deepTree($data, $value['id'], $level + 1);
             }
         }
-        return $tree?$tree:'';
+        return $tree;
     }
+
 
 }

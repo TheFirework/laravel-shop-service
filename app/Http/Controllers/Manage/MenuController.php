@@ -8,17 +8,16 @@ use Illuminate\Http\Request;
 
 class MenuController extends BaseController
 {
-    public function index(Request $request)
+    public function index()
     {
-        $menus = Menu::all();
-
-        return $this->success_return($menus);
+        $menus = Menu::all()->toArray();
+        $tree = $this->deepTree($menus);
+        return $this->success_return(['menus'=>$menus,'tree'=>$tree]);
     }
 
     public function store(MenuRequest $request)
     {
         $menu = Menu::create($request->input());
-
         return $this->success_return($menu,'新增菜单成功');
     }
 
